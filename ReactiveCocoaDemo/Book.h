@@ -11,8 +11,13 @@
 
 @interface Book : JSONModel
 
-@property (nonatomic, assign) NSInteger count;
-@property (nonatomic, assign) NSInteger start;
-@property (nonatomic, assign) NSInteger total;
+@property (nonatomic, copy) NSString *subtitle;
+@property (nonatomic, copy) NSString *pubdate;
+@property (nonatomic, copy) NSString *image;
+@property (nonatomic, copy) NSString *binding;
+@property (nonatomic, copy) NSString *catalog;
+@property (nonatomic, copy) NSString *pages;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *url;
 
 @end

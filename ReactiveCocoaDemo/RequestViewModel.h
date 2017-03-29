@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <ReactiveCocoa.h>
 
 @interface RequestViewModel : NSObject
+
+@property (nonatomic, strong, readonly) RACCommand *requestCommand;
+@property (nonatomic, strong, readonly) NSArray *models;
 
 @end

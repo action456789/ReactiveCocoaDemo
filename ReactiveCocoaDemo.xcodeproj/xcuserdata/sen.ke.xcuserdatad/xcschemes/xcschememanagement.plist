@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>ReactiveCocoaNetWorkRequest.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>814E8EAC1E8B965200F36888</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>81AE29791E8A6CD20049AFB7</key>
 		<dict>
 			<key>primary</key>

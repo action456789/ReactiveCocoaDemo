@@ -21,17 +21,19 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        [self initialBind];
+        
+        // 监听账号的属性值改变，把他们聚合成一个信号。
+        _enableLoginSignal = [RACSignal combineLatest:@[RACObserve(self.account, userName), RACObserve(self.account, pwd)] reduce:^id(NSString *account,NSString *pwd){
+            return @(account.length && pwd.length);
+        }];
+        
+        [self createLoginCommand];
+    
     }
     return self;
 }
 
-- (void)initialBind {
-    // 监听账号的属性值改变，把他们聚合成一个信号。
-    _enableLoginSignal = [RACSignal combineLatest:@[RACObserve(self.account, userName), @[RACObserve(self.account, pwd)]]
-                                           reduce:^id(NSString *userName, NSString *pwd){
-                                               return @(userName.length && pwd.length);
-                                           }];
+- (void)createLoginCommand {
     // 处理登录业务逻辑
     _loginCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         NSLog(@"点击了登录");
@@ -55,7 +57,7 @@
         if ([x isEqualToNumber:@(YES)]) {
             NSLog(@"正在登陆");
         } else {
-            NSLog(@"登陆成功");
+//            NSLog(@"登陆成功");
         }
     }];
 }
