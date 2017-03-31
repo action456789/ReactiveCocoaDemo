@@ -22,21 +22,32 @@
 }
 
 - (void)initialBind {
+//    @weakify(self)
+    
     _requestCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        NSLog(@"请求数据");
         
+        //        @strongify(self)
         RACSignal *requestSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            
             NSDictionary *parameters = @{@"q" : @"基础"};
             
-            [[AFHTTPSessionManager manager] GET:@"https://api.douban.com/v2/book/search" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSURLSessionDataTask *task = [[AFHTTPSessionManager manager] GET:@"https://api.douban.com/v2/book/search" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 [subscriber sendNext:responseObject];
-            } failure:nil];
+                [subscriber sendCompleted];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                [subscriber sendError:error];
+            }];
             
-            return nil;
+            return [RACDisposable disposableWithBlock:^{
+                if (task.state != NSURLSessionTaskStateCompleted) {
+                    [task cancel];
+                }
+            }];
         }];
         
-        return [requestSignal map:^id(NSDictionary *value) {
+        RACSignal *mapedSignal = [requestSignal map:^id(NSDictionary *value) {
             NSMutableArray *dictArr = value[@"books"];
+            
             NSArray *modelArr = [[dictArr.rac_sequence map:^id(id value) {
                 return [[Book alloc] initWithDictionary:value error:nil];
             }] array];
@@ -44,7 +55,11 @@
             return modelArr;
         }];
         
+        return mapedSignal;
+        
     }];
+    
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 }
 
 @end
