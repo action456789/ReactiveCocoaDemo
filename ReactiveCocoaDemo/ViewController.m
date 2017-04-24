@@ -42,7 +42,7 @@
 //    [self test2];
     
     // 3. 副作用
-//     [self test3];
+     [self test3];
     
     // 4. RACReplaySubject
 //    [self test4];
@@ -50,7 +50,7 @@
     // 5. replayLazily
 //    [self test5];
     // 6. RACCommand
-    [self test6];
+//    [self test6];
 }
 
 - (void)test6 {
@@ -150,15 +150,15 @@
         return nil;
     }];
     
-    // 【请求数据次数 +1】
-    [requestSignal subscribeNext:^(id x) {
-        NSLog(@"订阅者1");
-    }];
-
-    // 【请求数据次数 +1】
-    [requestSignal subscribeNext:^(NSArray *x) {
-        NSLog(@"订阅者2");
-    }];
+//    // 【请求数据次数 +1】
+//    [requestSignal subscribeNext:^(id x) {
+//        NSLog(@"订阅者1");
+//    }];
+//
+//    // 【请求数据次数 +1】
+//    [requestSignal subscribeNext:^(NSArray *x) {
+//        NSLog(@"订阅者2");
+//    }];
 
     
     // 将信号转换为内容为2的信号
@@ -166,21 +166,21 @@
         return [RACSignal return:@"2"];
     }];
     
-    // 将signal1信号所有错误信息转换为字符串@"Error"
-    [signal1 catchTo:[RACSignal return:@"Error"]];
-
-    // 在没有获取值之前以字符串@"Loading..."占位
-    [signal1 startWith:@"Loading..."];
-    
-    // 将信号进行绑定
-    // 【请求数据次数 +1】
-    RAC(self.acountField, text) = signal1;
-
-    // 订阅多个信号的任何错误，并且弹出UIAlertView
-    // 【请求数据次数 +2】
-    [[RACSignal merge:@[requestSignal, signal1]] subscribeError:^(NSError *error) {
-        NSLog(@"发生错误");
-    }];
+//    // 将signal1信号所有错误信息转换为字符串@"Error"
+//    [signal1 catchTo:[RACSignal return:@"Error"]];
+//
+//    // 在没有获取值之前以字符串@"Loading..."占位
+//    [signal1 startWith:@"Loading..."];
+//    
+//    // 将信号进行绑定
+//    // 【请求数据次数 +1】
+//    RAC(self.acountField, text) = signal1;
+//    
+//    // 订阅多个信号的任何错误，并且弹出UIAlertView
+//    // 【请求数据次数 +2】
+//    [[RACSignal merge:@[requestSignal, signal1]] subscribeError:^(NSError *error) {
+//        NSLog(@"发生错误");
+//    }];
 }
 
 - (void)test2 {

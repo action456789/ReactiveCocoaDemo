@@ -2,4 +2,54 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/ReactiveCocoa/ReactiveCocoa/RACStream.m"
+            timestampString = "512643230.806044"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "-flattenMap:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[RACStream(Operations) flattenMap:]"
+                  moduleName = "ReactiveCocoaDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kesen./Desktop/%E5%B7%A5%E4%BD%9C/RICI/ReactiveCocoaDemo/Pods/ReactiveCocoa/ReactiveCocoa/RACStream.m"
+                  timestampString = "512643233.785742"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "74">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__36-[RACStream(Operations) flattenMap:]_block_invoke"
+                  moduleName = "ReactiveCocoaDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kesen./Desktop/%E5%B7%A5%E4%BD%9C/RICI/ReactiveCocoaDemo/Pods/ReactiveCocoa/ReactiveCocoa/RACStream.m"
+                  timestampString = "512643233.788758"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
